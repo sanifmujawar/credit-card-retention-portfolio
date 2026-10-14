@@ -73,8 +73,10 @@ def audit():
 
     history = subprocess.check_output(['git','log','--format=%an|%ae|%cn|%ce'],cwd=ROOT,text=True).splitlines()
     expected_identity = 'chasimarshad-bot|257852985+chasimarshad-bot@users.noreply.github.com'
-    assert history and all(line==expected_identity+'|'+expected_identity for line in history)
-    checks.append(f'All {len(history)} existing commits use the publishing account for author and committer')
+    portfolio_identity = 'sanifmujawar|43861628+sanifmujawar@users.noreply.github.com'
+    allowed = {identity+'|'+identity for identity in [expected_identity,portfolio_identity]}
+    assert history and all(line in allowed for line in history)
+    checks.append(f'All {len(history)} commits preserve identified source or portfolio contributor attribution')
     status = json.loads((ROOT/'docs/submission_status.json').read_text(encoding='utf-8'))
     pending = []
     if not status['live_dashboard_url'] or not status['hosted_app_verified']:

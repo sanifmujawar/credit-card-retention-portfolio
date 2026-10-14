@@ -176,6 +176,7 @@ with model_tab:
         st.warning('This is an internal snapshot classification experiment. Unit 1 explored this dataset already. Independent, dated customer data is needed before claiming future churn prediction or deploying customer decisions.')
 with about:
     st.subheader('Source, scope and decisions')
+    st.caption('Mentor portfolio adaptation maintained by Sanif Mujawar. Based on Muhammad Asim\'s credited Unit 2 project, with OpenAI Codex development assistance.')
     st.write('Credit Card customers dataset, published by Sakshi Goyal on Kaggle; original source attribution: Analyttica LEAPS. One row represents a customer snapshot.')
     st.link_button('Dataset source','https://www.kaggle.com/datasets/sakshigoyal7/credit-card-customers')
     st.write('Customer identifiers, stored classifier outputs and the redundant open-to-buy field are excluded. Unknown demographic values remain missing; no customer rows are dropped in the default view.')
